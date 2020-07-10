@@ -1,0 +1,6 @@
+The images directory is visible from both the host machine and the virtualbox
+instance. This is a non-volatile directory, files or subdirectories here are
+not lost if the virtual machine is destroyed.
+
+Data can be downloaded from either the host system or the virtual machine and
+saved here.
