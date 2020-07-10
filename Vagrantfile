@@ -1,15 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-#  useradd -m chris --groups sudo
-#  su -c "printf 'cd /home/chris\nsudo su chris' >> .bash_profile" -s /bin/sh vagrant
-#SCRIPT
-
+Vagrant.configure("2") do |config|
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
-   Vagrant.configure("2") do |config|
   config.vm.box = "bento/ubuntu-18.04"
 
   # argument is a set of non-required options.
@@ -43,15 +39,15 @@
      chown -R vagrant:vagrant maali-1.5
      cd maali-1.5
 
-     sudo -H -u vagrant bash -c './install_scripts/Install_icrar_vagrant.sh'
+     sudo -H -u vagrant bash -c './install_scripts/Install_maali_vagrant.sh'
      echo "module path variable is $MODULEPATH"
      sudo -H -u vagrant bash -c './maali -t maali -v 1.5h -c vagrant -d'
      sudo -H -u vagrant bash -c 'source ~/.bashrc'
      sudo -H -u vagrant bash -c 'cp ~/maali-1.5/install_scripts/Install_HPC_ubuntu_18.sh ~/setup.sh'
-     cd 
+     sudo -H -u vagrant bash -c 'chmod 750 ~/setup.sh'
+     #sudo -H -u vagrant bash -c './setup.sh'
      cd scripts
      git clone https://github.com/chrisbpawsey/HDF5_examples.git
-     
-  SHELL
 
+   SHELL
 end
