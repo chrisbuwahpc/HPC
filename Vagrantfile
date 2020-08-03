@@ -46,8 +46,8 @@ Vagrant.configure("2") do |config|
      sudo -H -u vagrant bash -c 'cp ~/maali-1.5/install_scripts/Install_HPC_ubuntu_18.sh ~/setup.sh'
      sudo -H -u vagrant bash -c 'chmod 750 ~/setup.sh'
      #sudo -H -u vagrant bash -c './setup.sh'
-     cd scripts
-     git clone https://github.com/chrisbpawsey/HDF5_examples.git
+     sudo -H -u vagrant bash -c 'cd ~/scripts'
+     #git clone https://github.com/chrisbpawsey/HDF5_examples.git
 
    SHELL
 end
