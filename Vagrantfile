@@ -6,10 +6,14 @@ Vagrant.configure("2") do |config|
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
-  config.vm.box = "bento/ubuntu-18.04"
+  Vagrant.configure("2") do |config|
+   config.vm.box = "UWAHPC/cits5507.box"
+   config.vm.box_version = "2021.1.0"
+  end
+  
 
   # argument is a set of non-required options.
-  config.vm.synced_folder "images", "/home/vagrant/images"
+  #config.vm.synced_folder "images", "/home/vagrant/images"
   config.vm.synced_folder "data", "/home/vagrant/data"
   config.vm.synced_folder "scripts", "/home/vagrant/scripts"
 
@@ -25,30 +29,7 @@ Vagrant.configure("2") do |config|
      vb.memory = "4096"
    end
 
-   config.vm.host_name = "kaya2"
+   config.vm.host_name = "uwahpc"
 
-   config.vm.provision "shell", inline: <<-SHELL
-     apt-get update
-#
-     apt-get install -y tcl8.6 zip
-     ln -s /usr/bin/tclsh8.6 /usr/bin/tclsh
-     apt-get install -y environment-modules
-
-     git clone  https://github.com/chrisbpawsey/maali-1.5.git
-#
-     chown -R vagrant:vagrant maali-1.5
-     cd maali-1.5
-
-     sudo -H -u vagrant bash -c './install_scripts/Install_maali_vagrant.sh'
-     echo "module path variable is $MODULEPATH"
-     sudo -H -u vagrant bash -c './maali -t maali -v 1.5h -c vagrant -d'
-     sudo -H -u vagrant bash -c 'source ~/.bashrc'
-     sudo -H -u vagrant bash -c 'cp ~/maali-1.5/install_scripts/Install_HPC_ubuntu_18.sh ~/setup.sh'
-     sudo -H -u vagrant bash -c 'chmod 750 ~/setup.sh'
-     #sudo -H -u vagrant bash -c './setup.sh'
-     
-     sudo -H -u vagrant bash -c 'cd ~/scripts'
-     #git clone https://github.com/chrisbpawsey/HDF5_examples.git
-
-   SHELL
+   
 end

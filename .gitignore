@@ -1,3 +1,6 @@
 .vagrant
 scripts/HDF5_examples
 images/pgi*
+cits5507.box
+images/Vagrantfile
+
