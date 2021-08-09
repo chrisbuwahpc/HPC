@@ -2,16 +2,10 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-# All Vagrant configuration is done below. The "2" in Vagrant.configure
-# configures the configuration version (we support older styles for
-# backwards compatibility). Please don't change it unless you know what
-# you're doing.
-  Vagrant.configure("2") do |config|
-   config.vm.box = "UWAHPC/cits5507.box"
-   config.vm.box_version = "2021.1.0"
-  end
+ 
+  config.vm.box = "UWAHPC/cits5507.box"
+  config.vm.box_version = "2021.1.0"
   
-
   # argument is a set of non-required options.
   #config.vm.synced_folder "images", "/home/vagrant/images"
   config.vm.synced_folder "data", "/home/vagrant/data"
